@@ -7,12 +7,14 @@ FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = project.v
+MACROS_DIR = $(PWD)/../macros
+MACRO_SOURCES = tt_um_micro_test.v tt_um_micro_proj2.v tt_um_micro_proj3.v tt_um_micro_proj4.v
 
 ifneq ($(GATES),yes)
 
 # RTL simulation:
 SIM_BUILD				= sim_build/rtl
-VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) $(addprefix $(MACROS_DIR)/rtl/,$(MACRO_SOURCES))
 
 else
 
@@ -27,7 +29,7 @@ VERILOG_SOURCES += $(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilo
 VERILOG_SOURCES += $(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilog/gf180mcu_fd_sc_mcu7t5v0.v
 
 # this gets copied in by the GDS action workflow
-VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
+VERILOG_SOURCES += $(PWD)/gate_level_netlist.v $(addprefix $(MACROS_DIR)/,$(MACRO_SOURCES))
 
 endif
 

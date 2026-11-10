@@ -27,8 +27,8 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
-  // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  // The micro tile container:
+  tt_um_micro_tiles_container user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST

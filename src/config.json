@@ -31,6 +31,94 @@
   "//": "https://tinytapeout.com/faq/#how-can-i-map-an-additional-external-clock-to-one-of-the-gpios",
   "CLOCK_PORT": "clk",
 
+  "//": "Micro tiles: four 151.2 x 66.64 um macros. The right column is mirrored (FN), so that the",
+  "//": "signal pins of all the micro tiles face the channel in the middle of the tile.",
+  "MACROS": {
+    "tt_um_micro_test": {
+      "instances": {
+        "proj1": {
+          "location": [0, 0],
+          "orientation": "N"
+        }
+      },
+      "gds": ["dir::../macros/tt_um_micro_test.gds"],
+      "lef": ["dir::../macros/tt_um_micro_test.lef"],
+      "pnl": ["dir::../macros/tt_um_micro_test.v"]
+    },
+    "tt_um_micro_proj2": {
+      "instances": {
+        "proj2": {
+          "location": [195.44, 0],
+          "orientation": "FN"
+        }
+      },
+      "gds": ["dir::../macros/tt_um_micro_proj2.gds"],
+      "lef": ["dir::../macros/tt_um_micro_proj2.lef"],
+      "pnl": ["dir::../macros/tt_um_micro_proj2.v"]
+    },
+    "tt_um_micro_proj3": {
+      "instances": {
+        "proj3": {
+          "location": [0, 70.56],
+          "orientation": "N"
+        }
+      },
+      "gds": ["dir::../macros/tt_um_micro_proj3.gds"],
+      "lef": ["dir::../macros/tt_um_micro_proj3.lef"],
+      "pnl": ["dir::../macros/tt_um_micro_proj3.v"]
+    },
+    "tt_um_micro_proj4": {
+      "instances": {
+        "proj4": {
+          "location": [195.44, 70.56],
+          "orientation": "FN"
+        }
+      },
+      "gds": ["dir::../macros/tt_um_micro_proj4.gds"],
+      "lef": ["dir::../macros/tt_um_micro_proj4.lef"],
+      "pnl": ["dir::../macros/tt_um_micro_proj4.v"]
+    }
+  },
+
+  "//": "Power: the vertical Metal4 stripes of the container run over the micro tiles. The macro grid",
+  "//": "of the PDN script connects them to the horizontal Metal3 power stripes of each micro tile.",
+  "PDN_CFG": "dir::pdn_cfg.tcl",
+  "PDN_MACRO_CONNECTIONS": [
+    "proj1 VPWR VGND VPWR VGND",
+    "proj2 VPWR VGND VPWR VGND",
+    "proj3 VPWR VGND VPWR VGND",
+    "proj4 VPWR VGND VPWR VGND"
+  ],
+
+  "//": "LVS: extract the layout from the final GDS, including the contents of the micro tiles, and",
+  "//": "compare it with the netlists of the container and of the micro tiles. This way a micro tile",
+  "//": "that is not connected to the power grid of the container fails LVS.",
+  "MAGIC_EXT_USE_GDS": 1,
+  "LVS_INCLUDE_MARCO_NETLISTS": 1,
+
+  "//": "Keep the standard cells of the container away from the micro tiles",
+  "FP_MACRO_HORIZONTAL_HALO": 5.6,
+  "FP_MACRO_VERTICAL_HALO": 3.92,
+  "PDN_HORIZONTAL_HALO": 2.8,
+  "PDN_VERTICAL_HALO": 1.96,
+
+  "//": "The micro tiles use Metal1 to Metal3: don't route over them on these layers. The last 1.3 um",
+  "//": "on the channel side are left open, to give access to the signal pins of the micro tiles.",
+  "ROUTING_OBSTRUCTIONS": [
+    "Metal1 0 0 149.9 66.64",
+    "Metal2 0 0 149.9 66.64",
+    "Metal3 0 0 149.9 66.64",
+    "Metal1 196.74 0 346.64 66.64",
+    "Metal2 196.74 0 346.64 66.64",
+    "Metal3 196.74 0 346.64 66.64",
+    "Metal1 0 70.56 149.9 137.2",
+    "Metal2 0 70.56 149.9 137.2",
+    "Metal3 0 70.56 149.9 137.2",
+    "Metal1 196.74 70.56 346.64 137.2",
+    "Metal2 196.74 70.56 346.64 137.2",
+    "Metal3 196.74 70.56 346.64 137.2"
+  ],
+
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
