@@ -18,6 +18,14 @@ jobs:
         with:
           pdk: gf180mcuD
 
+      # Independent check on the final GDS: every micro tile must be powered from
+      # the Metal4 power pins of the container. The second run is a negative control.
+      - name: Trace micro tile power
+        shell: bash
+        run: |
+          python test/trace_power.py runs/wokwi/final/gds/tt_um_micro_tiles_container.gds
+          ! python test/trace_power.py runs/wokwi/final/gds/tt_um_micro_tiles_container.gds --cut tt_um_micro_proj4
+
   precheck:
     needs: gds
     runs-on: ubuntu-24.04

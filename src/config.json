@@ -80,9 +80,11 @@
     }
   },
 
-  "//": "Power: the vertical Metal4 stripes of the container run over the micro tiles. The macro grid",
-  "//": "of the PDN script connects them to the horizontal Metal3 power stripes of each micro tile.",
-  "PDN_CFG": "dir::pdn_cfg.tcl",
+  "//": "Power: the vertical Metal4 stripes of the container run over the micro tiles. The container has",
+  "//": "no horizontal stripes (FP_PDN_MULTILAYER is 0), so PDN_HORIZONTAL_LAYER only tells the macro grid",
+  "//": "of the default PDN script to connect the Metal4 stripes to the horizontal Metal3 power stripes",
+  "//": "of each micro tile, wherever they cross.",
+  "PDN_HORIZONTAL_LAYER": "Metal3",
   "PDN_MACRO_CONNECTIONS": [
     "proj1 VPWR VGND VPWR VGND",
     "proj2 VPWR VGND VPWR VGND",

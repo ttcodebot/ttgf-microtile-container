@@ -25,12 +25,15 @@ of the tile. The channel and the 23.52 um strip above the micro tiles hold the s
 ## Power
 
 The micro tiles use Metal1 to Metal3. Their power pins are horizontal Metal3 stripes. The container has the standard
-Tiny Tapeout power grid (vertical Metal4 stripes): the stripes run over the micro tiles, and the macro grid in
-[src/pdn_cfg.tcl](src/pdn_cfg.tcl) adds a Via3 array wherever a Metal4 stripe crosses a Metal3 stripe of the same
-net. The two grids do not have to be aligned.
+Tiny Tapeout power grid (vertical Metal4 stripes): the stripes run over the micro tiles, and the macro grid of the
+default LibreLane PDN script adds a Via3 array wherever a Metal4 stripe crosses a Metal3 stripe of the same net.
+The two grids do not have to be aligned. The settings that make this work are in [src/config.json](src/config.json):
+`PDN_HORIZONTAL_LAYER` (set to Metal3), `PDN_MACRO_CONNECTIONS`, the halos and `ROUTING_OBSTRUCTIONS`.
 
 LVS extracts the final GDS, including the contents of the micro tiles (`MAGIC_EXT_USE_GDS`), so a micro tile that
-is not connected to the power grid of the container fails LVS.
+is not connected to the power grid of the container fails LVS. [test/trace_power.py](test/trace_power.py) is an
+independent check on the final GDS: it follows the metal and via layers from the Metal4 power pins of the container
+to the standard cell rails of every micro tile.
 
 ## Tools
 
