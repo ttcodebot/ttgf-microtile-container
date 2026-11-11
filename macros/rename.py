@@ -18,7 +18,7 @@ def copy_text(path_template: str, name: str):
         f.write(data.replace(SOURCE, name))
 
 
-for i in range(2, 5):
+for i in range(3, 5):
     name = f"tt_um_micro_proj{i}"
 
     layout = pya.Layout()

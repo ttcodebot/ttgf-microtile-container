@@ -7,8 +7,9 @@ A Tiny Tapeout 1x1 project for the `gf180mcuD` PDK that holds four micro tiles: 
 micro tile that is connected to the pins of the project. The clock, reset and inputs of the other micro tiles are
 held low.
 
-The four macros in `macros/` are copies of the test micro tile built by
-[ttgf-microtile](https://github.com/ttcodebot/ttgf-microtile) (see `macros/rename.py`).
+The macros in `macros/` were built by [ttgf-microtile](https://github.com/ttcodebot/ttgf-microtile): `proj1`,
+`proj3` and `proj4` are copies of the counter test micro tile (see `macros/rename.py`), `proj2` is a dense generated
+design from its capacity sweep (`tt_um_micro_sweep`: 28 flops, 178 cells, 81 % of the micro tile core).
 
 ## Floorplan
 

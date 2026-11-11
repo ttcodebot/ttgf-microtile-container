@@ -45,16 +45,16 @@
       "lef": ["dir::../macros/tt_um_micro_test.lef"],
       "pnl": ["dir::../macros/tt_um_micro_test.v"]
     },
-    "tt_um_micro_proj2": {
+    "tt_um_micro_sweep": {
       "instances": {
         "proj2": {
           "location": [195.44, 0],
           "orientation": "FN"
         }
       },
-      "gds": ["dir::../macros/tt_um_micro_proj2.gds"],
-      "lef": ["dir::../macros/tt_um_micro_proj2.lef"],
-      "pnl": ["dir::../macros/tt_um_micro_proj2.v"]
+      "gds": ["dir::../macros/tt_um_micro_sweep.gds"],
+      "lef": ["dir::../macros/tt_um_micro_sweep.lef"],
+      "pnl": ["dir::../macros/tt_um_micro_sweep.v"]
     },
     "tt_um_micro_proj3": {
       "instances": {
