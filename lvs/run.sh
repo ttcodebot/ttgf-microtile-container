@@ -33,7 +33,7 @@ cat > "state_$TAG.json" <<EOF
   "metrics": {}
 }
 EOF
-python -m librelane ${LIBRELANE_ARGS:---dockerized --docker-no-tty} --pdk gf180mcuD \
+python -m librelane ${LIBRELANE_ARGS:---docker-no-tty --dockerized} --pdk gf180mcuD \
   --run-tag "$TAG" --overwrite --hide-progress-bar \
   --from Magic.SpiceExtraction --to Checker.LVS \
   -i "state_$TAG.json" "config_$TAG.json"

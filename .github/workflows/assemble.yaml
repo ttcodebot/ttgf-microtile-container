@@ -108,7 +108,6 @@ jobs:
       # the same layout without the Via3 cuts over one micro tile must fail.
       - name: LVS
         run: |
-          pip install klayout==0.29.12
           ./lvs/run.sh pkg/tt_submission/$GROUP.gds pkg/tt_submission/$GROUP.v lvs_ok
           python lvs/cut_via3.py pkg/tt_submission/$GROUP.gds cut.gds tt_um_micro_sweep
           ! ./lvs/run.sh cut.gds pkg/tt_submission/$GROUP.v lvs_cut
