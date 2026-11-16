@@ -1,0 +1,20 @@
+95. Printing statistics.
+
+=== tt_um_micro_adv_far ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+        4        - wires
+       18        - wire bits
+        4        - public wires
+       18        - public wire bits
+        4        - ports
+       18        - port bits
+       10  118.541 cells
+        8   70.246   gf180mcu_fd_sc_mcu7t5v0__clkinv_1
+        2   48.294   gf180mcu_fd_sc_mcu7t5v0__dlya_1
+
+   Chip area for module '\tt_um_micro_adv_far': 118.540800
+     of which used for sequential elements: 0.000000 (0.00%)
+
