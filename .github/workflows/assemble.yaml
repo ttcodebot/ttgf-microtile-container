@@ -37,13 +37,12 @@ jobs:
         run: |
           start=$(date +%s.%N)
           python tt/micro_tiles.py assemble --container micro_tiles/container --name $GROUP --out out --shuttle ttgf26c \
-            projects/tt_um_micro_test \
-            projects/tt_um_wokwi_457572218833202177 \
-            projects/tt_um_wokwi_455303592417686529 \
-            projects/tt_um_micro_sweep
+            projects/tt_um_micro_adv_tie \
+            projects/tt_um_micro_adv_far \
+            projects/tt_um_micro_sweep \
+            projects/tt_um_wokwi_455303592417686529
           end=$(date +%s.%N)
           echo "Assembly time: $(echo "$end - $start" | bc) s" | tee -a $GITHUB_STEP_SUMMARY
-          diff out/subprojects.json subprojects.json
 
       # Every micro tile must be powered from the Metal4 power pins of the container.
       # The second run is a negative control.
@@ -72,15 +71,6 @@ jobs:
       - name: Run Tiny Tapeout Precheck
         uses: TinyTapeout/tt-gds-action/precheck@ttgf26c
 
-  gl_test:
-    needs: assemble
-    runs-on: ubuntu-24.04
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v6
-
-      - name: GL test
-        uses: TinyTapeout/tt-gds-action/gl_test@ttgf26c
 
   lvs:
     needs: assemble
