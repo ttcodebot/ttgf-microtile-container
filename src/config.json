@@ -100,6 +100,14 @@
   "//": "The slot LEF blocks Metal1 to Metal3 over the whole micro tile, so the container only touches",
   "//": "the signal pins and the Metal3 power stripes of a micro tile, whatever is inside it.",
 
+  "//": "Antenna: the container reaches a slot signal pin only with a Via3 from Metal4. These Metal3 strips",
+  "//": "0.28 um outside the slot edges leave a gap narrower than a Metal3 wire plus its spacing, so no",
+  "//": "Metal3 wire of the container can touch a pin.",
+  "ROUTING_OBSTRUCTIONS": [
+    "Metal3 151.48 0 151.76 137.2",
+    "Metal3 194.88 0 195.16 137.2"
+  ],
+
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
