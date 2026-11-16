@@ -27,7 +27,7 @@ VIAS = {
     (40, 0): ("Metal3", "Metal4"),
 }
 NETS = ["VPWR", "VGND"]
-MACRO_PREFIX = "tt_um_micro_"
+MACRO_PREFIX = "tt_um_"
 
 
 def flat_region(layout, cell, layer):
