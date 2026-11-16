@@ -11,7 +11,6 @@
       "clock_hz": 0,
       "repo": "https://github.com/ttcodebot/ttgf-microtile",
       "commit": "f37cc47c1cd11249489ad110bb35baf1756113b1",
-      "workflow_url": "https://github.com/ttcodebot/ttgf-microtile/actions/runs/43833284573",
       "pinout": {
         "ui[0]": "in[0]",
         "ui[1]": "in[1]",
@@ -40,7 +39,6 @@
       "clock_hz": 0,
       "repo": "https://github.com/ttcodebot/ttgf-microtile",
       "commit": "8e9c2f17c8162e4152309d4c4acc6d3fd935f187",
-      "workflow_url": "https://github.com/ttcodebot/ttgf-microtile/actions/runs/43889021973",
       "pinout": {
         "ui[0]": "in[0]",
         "ui[1]": "in[1]",
@@ -69,7 +67,6 @@
       "clock_hz": 0,
       "repo": "https://github.com/ttcodebot/ttgf-microtile",
       "commit": "b9cfd87e3e22400a25f8212b309eb87044bdec92",
-      "workflow_url": "https://github.com/ttcodebot/ttgf-microtile/actions/runs/43889028525",
       "pinout": {
         "ui[0]": "in[0]",
         "ui[1]": "in[1]",
@@ -98,7 +95,6 @@
       "clock_hz": 0,
       "repo": "https://github.com/ttcodebot/ttgf-microtile",
       "commit": "a71b18f8154b936340d75e2204ba158f2e278598",
-      "workflow_url": "https://github.com/ttcodebot/ttgf-microtile/actions/runs/43889044259",
       "pinout": {
         "ui[0]": "in[0]",
         "ui[1]": "in[1]",

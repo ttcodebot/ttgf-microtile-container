@@ -1,0 +1,123 @@
+name: assemble
+
+# Assembles a micro tile container from the generic container and four micro tiles
+# without place and route, then checks the result like any 1x1 project.
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  GROUP: tt_um_micro_tiles_group_1
+
+jobs:
+  assemble:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+
+      - name: Checkout tt-support-tools repo
+        uses: actions/checkout@v6
+        with:
+          repository: ttcodebot/tt-support-tools
+          ref: microtile-shuttle-gf
+          path: tt
+
+      - name: Setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install tt-support-tools dependencies
+        run: pip install -r tt/requirements.txt
+
+      - name: Assemble the container
+        run: |
+          start=$(date +%s.%N)
+          python tt/micro_tiles.py assemble --container micro_tiles/container --name $GROUP --out out --shuttle ttgf26c \
+            projects/tt_um_micro_test \
+            projects/tt_um_wokwi_457572218833202177 \
+            projects/tt_um_wokwi_455303592417686529 \
+            projects/tt_um_micro_sweep
+          end=$(date +%s.%N)
+          echo "Assembly time: $(echo "$end - $start" | bc) s" | tee -a $GITHUB_STEP_SUMMARY
+          diff out/subprojects.json subprojects.json
+
+      # Every micro tile must be powered from the Metal4 power pins of the container.
+      # The second run is a negative control.
+      - name: Trace micro tile power
+        run: |
+          python test/trace_power.py out/$GROUP.gds
+          ! python test/trace_power.py out/$GROUP.gds --cut tt_um_micro_sweep
+
+      - name: Package like the tt_submission artifact of a project
+        run: |
+          mkdir -p pkg/tt_submission
+          cp out/$GROUP.* out/commit_id.json out/pdk.json pkg/tt_submission/
+          cp -r out/stats pkg/tt_submission/
+          cp -r out/docs out/info.yaml LICENSE pkg/
+
+      - name: Publish tt_submission artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: tt_submission
+          path: pkg/*
+
+  precheck:
+    needs: assemble
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Run Tiny Tapeout Precheck
+        uses: TinyTapeout/tt-gds-action/precheck@ttgf26c
+
+  gl_test:
+    needs: assemble
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+
+      - name: GL test
+        uses: TinyTapeout/tt-gds-action/gl_test@ttgf26c
+
+  lvs:
+    needs: assemble
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+
+      - name: Download the assembled container
+        uses: actions/download-artifact@v7
+        with:
+          name: tt_submission
+          path: pkg
+
+      - name: Setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install LibreLane
+        run: pip install librelane==3.0.14
+
+      # Extract the layout from the GDS, with the contents of the micro tiles, and
+      # compare it with the stitched netlist. The second run is a negative control:
+      # the same layout without the Via3 cuts over one micro tile must fail.
+      - name: LVS
+        run: |
+          pip install klayout==0.29.12
+          ./lvs/run.sh pkg/tt_submission/$GROUP.gds pkg/tt_submission/$GROUP.v lvs_ok
+          python lvs/cut_via3.py pkg/tt_submission/$GROUP.gds cut.gds tt_um_micro_sweep
+          ! ./lvs/run.sh cut.gds pkg/tt_submission/$GROUP.v lvs_cut
+
+      - name: Upload LVS reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lvs_reports
+          path: |
+            runs/*/*netgen-lvs/reports/*
+            runs/*/*.log

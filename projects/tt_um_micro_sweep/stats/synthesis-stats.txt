@@ -1,0 +1,26 @@
+102. Printing statistics.
+
+=== tt_um_micro_sweep ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      149        - wires
+      163        - wire bits
+       60        - public wires
+       74        - public wire bits
+        4        - ports
+       18        - port bits
+      153 5.67E+03 cells
+        9  158.054   gf180mcu_fd_sc_mcu7t5v0__and2_1
+       28  2089.83   gf180mcu_fd_sc_mcu7t5v0__dffrnq_1
+       22  241.472   gf180mcu_fd_sc_mcu7t5v0__nand2_1
+       25   329.28   gf180mcu_fd_sc_mcu7t5v0__nor2_1
+        3   52.685   gf180mcu_fd_sc_mcu7t5v0__oai21_1
+       10  526.848   gf180mcu_fd_sc_mcu7t5v0__xnor3_1
+       23  605.875   gf180mcu_fd_sc_mcu7t5v0__xor2_1
+       33 1.67E+03   gf180mcu_fd_sc_mcu7t5v0__xor3_1
+
+   Chip area for module '\tt_um_micro_sweep': 5670.201600
+     of which used for sequential elements: 2089.830400 (36.86%)
+
