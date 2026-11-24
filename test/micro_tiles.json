@@ -1,0 +1,36 @@
+{
+  "n": 4,
+  "kind": "bidir",
+  "bidir": true,
+  "n_in": 4,
+  "n_out": 4,
+  "connect_uio": true,
+  "gate": [
+    "ui_in",
+    "uio_in"
+  ],
+  "k": [
+    0,
+    60,
+    165,
+    90
+  ],
+  "day0": [
+    false,
+    true,
+    false,
+    true
+  ],
+  "macros": [
+    "tt_um_mgf_r4_cnt",
+    "tt_um_mgf_r4_d0a",
+    "tt_um_mgf_r4_dense",
+    "tt_um_mgf_r4_d0b"
+  ],
+  "from": [
+    "ttcodebot/ttgf-microtile run 45487979387",
+    "ttcodebot/ttgf-microtile run 45487979772",
+    "ttcodebot/ttgf-microtile run 45487976129",
+    "ttcodebot/ttgf-microtile run 45487978648"
+  ]
+}
