@@ -1,26 +1,16 @@
-# The micro tiles of this container. assemble.py generates the rest from this file.
-#
-# Each micro tile is identified by the GitHub Actions run that hardened it: the
-# `tt_submission` artifact of that run holds its layout, netlist, docs and commit.
-# The position in the list is the value on uio_in[1:0] that selects the micro tile.
-
+top_module: tt_um_micro_tiles_gf_r6d0_open
+title: "gf180 pin plan r6, d0 container"
 shuttle: ttgf26c
-container: tt_um_micro_tiles_group_1
-
-# All micro tiles must be built with this flow and PDK (pdk.json of the artifact):
-pdk:
-  FLOW_NAME: LibreLane
-  FLOW_VERSION: 3.0.14
-  PDK: gf180mcuD
-  PDK_SOURCE: open_pdks
-  PDK_VERSION: 54435919abffb937387ec956209f9cf5fd2dfbee
-
+pdk: gf180mcuD
+slots: [[0, 0], [195.44, 0], [0, 70.56], [195.44, 70.56]]
+connect_uio: false
+gate: [ui_in]
 micro_tiles:
-  - repo: ttcodebot/ttgf-microtile # branch tools-microtile: counter / input mirror
-    run: 43833284573
-  - repo: ttcodebot/ttgf-microtile # branch mt-wokwi-457572218833202177
-    run: 43889021973
-  - repo: ttcodebot/ttgf-microtile # branch mt-wokwi-455303592417686529
-    run: 43889028525
-  - repo: ttcodebot/ttgf-microtile # branch mt-sweep-28-3: dense generated design
-    run: 43889044259
+  - repo: ttcodebot/ttgf-microtile   # r6-d0b
+    run: 45487978470
+  - repo: ttcodebot/ttgf-microtile   # r6-d0a
+    run: 45487977682
+  - repo: ttcodebot/ttgf-microtile   # r6-d0c
+    run: 45487978396
+  - repo: ttcodebot/ttgf-microtile   # r6-d0d
+    run: 45487976114

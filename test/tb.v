@@ -28,7 +28,7 @@ module tb ();
 `endif
 
   // The micro tile container:
-  tt_um_micro_tiles_group_1 user_project (
+  `TOP_MODULE user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
