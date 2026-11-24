@@ -33,8 +33,10 @@
 
   "//": "Micro tiles: four 151.2 x 66.64 um macros. The right column is mirrored (FN), so that the",
   "//": "signal pins of all the micro tiles face the channel in the middle of the tile.",
+  "IGNORE_DISCONNECTED_MODULES": ["tt_um_mgf_r6_d0b", "tt_um_mgf_r6_d0a", "tt_um_mgf_r6_d0c", "tt_um_mgf_r6_d0d"],
+
   "MACROS": {
-    "tt_um_micro_test": {
+    "tt_um_mgf_r6_d0b": {
       "instances": {
         "proj1": {
           "location": [
@@ -45,16 +47,16 @@
         }
       },
       "gds": [
-        "dir::../macros/tt_um_micro_test/tt_um_micro_test.gds"
+        "dir::../macros/tt_um_mgf_r6_d0b.gds"
       ],
       "lef": [
-        "dir::../macros/tt_um_micro_test/tt_um_micro_test.lef"
+        "dir::../macros/tt_um_mgf_r6_d0b.lef"
       ],
       "pnl": [
-        "dir::../macros/tt_um_micro_test/tt_um_micro_test.v"
+        "dir::../macros/tt_um_mgf_r6_d0b.pnl.v"
       ]
     },
-    "tt_um_wokwi_457572218833202177": {
+    "tt_um_mgf_r6_d0a": {
       "instances": {
         "proj2": {
           "location": [
@@ -65,16 +67,16 @@
         }
       },
       "gds": [
-        "dir::../macros/tt_um_wokwi_457572218833202177/tt_um_wokwi_457572218833202177.gds"
+        "dir::../macros/tt_um_mgf_r6_d0a.gds"
       ],
       "lef": [
-        "dir::../macros/tt_um_wokwi_457572218833202177/tt_um_wokwi_457572218833202177.lef"
+        "dir::../macros/tt_um_mgf_r6_d0a.lef"
       ],
       "pnl": [
-        "dir::../macros/tt_um_wokwi_457572218833202177/tt_um_wokwi_457572218833202177.v"
+        "dir::../macros/tt_um_mgf_r6_d0a.pnl.v"
       ]
     },
-    "tt_um_wokwi_455303592417686529": {
+    "tt_um_mgf_r6_d0c": {
       "instances": {
         "proj3": {
           "location": [
@@ -85,16 +87,16 @@
         }
       },
       "gds": [
-        "dir::../macros/tt_um_wokwi_455303592417686529/tt_um_wokwi_455303592417686529.gds"
+        "dir::../macros/tt_um_mgf_r6_d0c.gds"
       ],
       "lef": [
-        "dir::../macros/tt_um_wokwi_455303592417686529/tt_um_wokwi_455303592417686529.lef"
+        "dir::../macros/tt_um_mgf_r6_d0c.lef"
       ],
       "pnl": [
-        "dir::../macros/tt_um_wokwi_455303592417686529/tt_um_wokwi_455303592417686529.v"
+        "dir::../macros/tt_um_mgf_r6_d0c.pnl.v"
       ]
     },
-    "tt_um_micro_sweep": {
+    "tt_um_mgf_r6_d0d": {
       "instances": {
         "proj4": {
           "location": [
@@ -105,13 +107,13 @@
         }
       },
       "gds": [
-        "dir::../macros/tt_um_micro_sweep/tt_um_micro_sweep.gds"
+        "dir::../macros/tt_um_mgf_r6_d0d.gds"
       ],
       "lef": [
-        "dir::../macros/tt_um_micro_sweep/tt_um_micro_sweep.lef"
+        "dir::../macros/tt_um_mgf_r6_d0d.lef"
       ],
       "pnl": [
-        "dir::../macros/tt_um_micro_sweep/tt_um_micro_sweep.v"
+        "dir::../macros/tt_um_mgf_r6_d0d.pnl.v"
       ]
     }
   },
